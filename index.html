@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            background: linear-gradient(rgba(34, 34, 34, 0.8), rgba(34, 34, 34, 0.8)), 
+                        url('/images/background1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        
+        
+        .container {
+            display: flex;
+            flex:wrap;
+            height: 550px; 
+            max-width: 1200px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            overflow: auto;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        
+        
+        .profile {
+            width: 30%;
+            padding: 20px;
+            text-align: center;
+            /* background: #222; */
+            background: linear-gradient(rgba(34, 34, 34, 0.8), rgba(34, 34, 34, 0.8)), 
+            url('/images/profile2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+        }
+        
+        
+        .profile img {
+            border-radius: 50%;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 15px;
+            border: 4px solid #4CAF50;
+            object-fit: cover;
+        }
+        
+        .profile h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .profile h2 {
+            font-size: 1.2rem;
+            color: #bbb;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+        
+        .profile .social-media a {
+            margin: 0 10px;
+            color: #fff;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .profile .social-media a:hover {
+            color: #4CAF50;
+        }
+        
+        .profile .download-cv {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background: #4CAF50;
+            width:63%;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+        
+        .profile .download-cv:hover {
+            background: #45a049;
+        }
+        
+        
+        .content {
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            padding: 20px;
+            overflow-y: auto;
+        }
+        
+        
+        
+        .education,
+        .skills,
+        .design-skills,
+        .certificates,
+        .knowledges {
+            background: #333;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        
+        .coding-skills,.experience{
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.1)
+        }
+        
+        
+        .sections {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .left-section {
+            width: 50%;
+        }
+        
+        .right-section {
+            width: 50%;
+        }
+        
+        .education, .experience, .design-skills, .knowledges {
+            width: 100%;
+        }
+        
+        .education h2, .experience h2, .design-skills h2, .knowledges h2, .certificates h2 {
+            font-size: 24px;
+            margin-bottom: 35px;
+        }
+        
+        .education-item, .experience-item {
+            display: grid;
+            grid-template-columns: 30% 2px auto;
+            align-items: start;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .education-item .left, .experience-item .left {
+            text-align: right;
+        }
+        
+        .education-item .year, .experience-item .year {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #aaa;
+        }
+        
+        .education-item .university, .experience-item .company {
+            font-size: 14px;
+            color: #aaa;
+        }
+        
+        
+        .education-item .right, .experience-item .right {
+            padding-left: 10px;
+        }
+        
+        .education-item .right h3, .experience-item .right h3 {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        
+        .education-item .right p, .experience-item .right p {
+            font-size: 14px;
+            line-height: 2.0;
+        }
+        
+        .education-item .right p{
+            font-size: 15px;
+            color: #ebe8e8;
+        }
+        
+        .design-skills .skill, .coding-skills .skill {
+            margin-bottom: 15px;
+        }
+        
+        .space{
+            margin-bottom: 70px;
+        }
+        
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .skill-info .percentage {
+            font-weight: normal;
+            color: #bbbaba;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #444;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background-color: #45a049;
+            border-radius: 5px;
+        }
+        
+        .highlight {
+            color: #45a049; 
+        }
+        
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 20px; 
+            width: 100%;
+            margin: 10px 0;
+        }
+        
+        .social-media a {
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        
+        .social-media a:hover {
+            color: #00aced;
+            transform: scale(1.2);
+        }
+        
+        .social-media i {
+            font-size: 20px;
+        }
+        
+        .knowledges {
+            margin-top: 50px; 
+        }
+        
+        .knowledges h2 {
+            margin-bottom: 20px;
+        }
+        
+        .knowledge-item {
+            background-color: #45a049;
+            color: white;
+            padding: 7px 12px; 
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-size: 14px;
+            text-align: center;
+            display: inline-block;
+        }
+        
+        .certificates {
+            margin-top: 50px;
+            display: block;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .hold {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .certificate-item {
+            background: #333;
+            color: #fff;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            box-sizing: border-box;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            margin-bottom: 15px;
+            display: flex;
+            border: 2px solid #45a049;
+        }
+        
+        .certificate-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        .certificate-left {
+            background-color: #45a049;
+            color: #fff;
+            border-radius: 10px 0 0 10px;
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .certificate-right {
+            padding: 20px;
+            width: 70%;
+        }
+        
+        .certificate-item h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #45a049;
+        }
+        
+        .certificate-item p {
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+        
+        .certificate-item .issuer {
+            font-size: 14px;
+            font-weight: bold;
+            color: #ffe3e0;
+        }
+        
+        .certificate-item .date {
+            font-style: italic;
+            color: #aaa;
+            font-size: 13px;
+        }
+        
+        .certificate-item .description {
+            margin-top: 10px;
+            line-height: 1.5;
+            color: #c7c7c7;
+        }
+        
+        .profile h4 {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #aaa;
+            font-weight: normal;
+        }
+        
+        
+        .bio-item {
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            margin-bottom: 30px;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+            color: #fff;
+        }
+        
+        .bio-item .left {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .bio-item .left p {
+            margin: 5px 0;
+        }
+        
+        .bio-item .bio {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+        
+        .bio-item .age {
+            font-size: 1.1rem;
+            color: #bbb;
+            padding: 20px;
+        }
+        
+        .bio-item .timeline {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        
+        
+        .bio-item .right {
+            flex: 1;
+            margin-left: 20px;
+        }
+        
+        .bio-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+        
+        .bio-item p {
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #bbb;
+        }
+        
+        </style>
+        
+    <div class="container">
+        <div class="profile">
+            <img src="images/profile.jpg" alt="Tumisho Aphane's Profile Picture" class="profile-image">
+            <h1>Tumisho Aphane</h1>
+            <h2>Full Stack Web Developer</h2>
+            <div class="social-media">
+                <a href="https://www.linkedin.com/in/tumisho-aphane-9a389525b" title="LinkedIn" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/masflame" title="GitHub" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="#" title="WhatsApp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:tumisho@example.com" title="Email" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+            <h4>+27 81 591 8802</h4>
+            <button class="download-cv">Download CV</button>
+        </div>
+        
+        <main class="content">
+            <section class="sections">
+                <div class="left-section">
+                    <div class="bio-item">
+                        <div class="left">
+                            <p class="bio">Biography</p>
+                            <p class="age">Age: 21</p>
+                        </div>
+                        <div class="timeline">
+                            <div class="pulse"><div class="dot"></div></div>
+                        </div>
+                        <div class="right">
+                            <!-- <h3>Tumisho Aphane</h3> -->
+                            <p>
+                                I am a passionate software developer with a strong foundation in coding
+                                 and problem-solving. I specialize in both front-end and back-end 
+                                 technologies, constantly striving to learn and grow in the tech field. 
+            
+                            </p>
+                                <br>
+                            <p>
+                                I'm excited to bring my skills to new challenges and collaborate with 
+                                like-minded individuals. My goal is to contribute to creating innovative 
+                                and impactful software solutions that make a positive difference in the 
+                                world.
+                           </p>
+                        </div>
+                    </div>
+                    
+                    <article class="education">
+                        <h2>Education</h2>
+                        <div class="education-item">
+                            <div class="left">
+                                <p class="year">2021 - 2024</p>
+                                <p class="university">Sol Plaatje University</p>
+                            </div>
+                            <div class="timeline">
+                                <div class="pulse"><div class="dot"></div></div>
+                            </div>
+                            <div class="right">
+                                <h3>Diploma in Information and Communication Technology: Application Development</h3>
+                                <p>This diploma provided me with a strong foundation in application development, where i gained expertise in programming, system analysis, and software engineering.</p>
+                            </div>
+                            
+                        </div>
+                    </article>
+                    <article class="experience">
+                        <h2>Experience</h2>
+                    
+                        <div class="experience-item">
+                            <div class="left">
+                                <p class="year">2022 - 2022</p>
+                                <p class="company">Snode</p>
+                            </div>
+                            <div class="timeline">
+                                <div class="pulse"><div class="dot"></div></div>
+                            </div>
+                            <div class="right">
+                                <h3>Junior Software Developer</h3>
+                                <p>Developed and tested software features, maintained existing systems, and provided technical support to enhance functionality and user experience.</p>
+                            </div>
+                        </div>
+                    
+                        <div class="experience-item">
+                            <div class="left">
+                                <p class="year">2023 - 2024</p>
+                                <p class="company">Boxfusion</p>
+                            </div>
+                            <div class="timeline">
+                                <div class="pulse"><div class="dot"></div></div>
+                            </div>
+                            <div class="right">
+                                <h3>Web Designer</h3>
+                                <p>Created website layouts, graphics, and designs while ensuring a seamless user experience aligned with client goals.</p>
+                            </div>
+                        </div>
+                    
+                        <div class="experience-item">
+                            <div class="left">
+                                <p class="year">2022 - Present</p>
+                                <p class="company">Hex Softwares</p>
+                            </div>
+                            <div class="timeline">
+                                <div class="pulse"><div class="dot"></div></div>
+                            </div>
+                            <div class="right">
+                                <h3>Web Developer Intern</h3>
+                                <p>Built responsive web applications, collaborated with backend teams, and optimized performance using modern frameworks.</p>
+                            </div>
+                        </div>
+                    </article>
+                    
+                    
+                </div>
+                <section class="right-section">
+                    <article class="skills-sec">
+                        <div class="design-skills">
+                            <h2>Design <span class="highlight">Skills</span></h2>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>Web Design</span>
+                                <span class="percentage">95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>Graphic Design</span>
+                                <span class="percentage">90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>UI/UX Design</span>
+                                <span class="percentage">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>Illustration</span>
+                                <span class="percentage">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+
+                        </div>
+                          <!-- <div class="space"></div> -->
+                    <div class="coding-skills">
+                        <h2>Coding <span class="highlight">Skills</span></h2>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>HTML</span>
+                                <span class="percentage">95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>CSS</span>
+                                <span class="percentage">90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>JavaScript</span>
+                                <span class="percentage">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>Python</span>
+                                <span class="percentage">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                            <div class="skill-info">
+                                <span>Java</span>
+                                <span class="percentage">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill">
+                    </div>
+                            <div class="skill-info">
+                                <span>PHP</span>
+                                <span class="percentage">70%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 70%;"></div>
+                            </div>
+                        </div>
+                    </article>
+                    <article class="knowledges">
+                        <h2>Knowledges</h2>
+                        <div class="knowledge-item">SEO</div>
+                        <div class="knowledge-item">Content Management</div>
+                        <div class="knowledge-item">Agile Methodologies</div>
+                        <div class="knowledge-item">Project Management</div>
+                        <div class="knowledge-item">Version Control (Git)</div>
+                        <div class="knowledge-item">Responsive Design</div>
+                        <div class="knowledge-item">Cross-Browser Compatibility</div>
+                        <div class="knowledge-item">Debugging</div>
+                    </article>
+                </section>
+            </section>
+            <article class="certificates">
+                <h2>Certificates</h2>
+                <div class="hold">
+                    <div class="certificate-item">
+                        <div class="certificate-left">
+                            <p class="issuer">Coursera</p>
+                        </div>
+                        <div class="certificate-right">
+                            <h3>Web Development Certificate</h3>
+                            <p class="date">Date: January 2021</p>
+                            <p class="description">Completed a comprehensive web development course.</p>
+                        </div>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="certificate-left">
+                            <p class="issuer">Udemy</p>
+                        </div>
+                        <div class="certificate-right">
+                            <h3>Graphic Design Certificate</h3>
+                            <p class="date">Date: March 2022</p>
+                            <p class="description">Learned the fundamentals of graphic design.</p>
+                        </div>
+                    </div>
+                    <div class="certificate-item">
+                        <div class="certificate-left">
+                            <p class="issuer">edX</p>
+                        </div>
+                        <div class="certificate-right">
+                            <h3>Python Programming Certificate</h3>
+                            <p class="date">Date: June 2022</p>
+                            <p class="description">Gained proficiency in Python programming.</p>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </main>
+    </div>
+</body>
+</html>
+
+
